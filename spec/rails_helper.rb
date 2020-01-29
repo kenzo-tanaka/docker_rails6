@@ -54,6 +54,16 @@ RSpec.configure do |config|
   # https://relishapp.com/rspec/rspec-rails/docs
   config.infer_spec_type_from_file_location!
 
+
+  # ヘッドレスモード
+  config.before(:each) do |example|
+    if example.metadata[:type] == :system
+      driven_by :selenium_chrome_headless, screen_size: [1400, 1400]
+    end
+  end
+
+  config.include FactoryBot::Syntax::Methods
+
   # Filter lines from Rails gems in backtraces.
   config.filter_rails_from_backtrace!
   # arbitrary gems may also be filtered via:
