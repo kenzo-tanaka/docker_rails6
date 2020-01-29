@@ -13,6 +13,7 @@ services:
       - "3000:3000"
     depends_on:
       - db
+      - chrome
   chrome:
     image: selenium/standalone-chrome:3.141.59-dubnium
     ports:
